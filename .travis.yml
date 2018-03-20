@@ -3,6 +3,9 @@ node_js:
   - "8.2.1"
 jdk:
   - oraclejdk8
+cache:
+  directories:
+  - $HOME/.m2
 jobs:
   include:
     - stage: CI CD For WSO2 API Cloud 
