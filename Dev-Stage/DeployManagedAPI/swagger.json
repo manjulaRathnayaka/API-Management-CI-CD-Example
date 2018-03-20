@@ -2,36 +2,41 @@
   "swagger" : "2.0",
   "info" : { },
   "paths" : {
-    "/hello/{name}" : {
+    "/service" : {
       "get" : {
-        "operationId" : "hello",
-        "parameters" : [ {
-          "name" : "name",
-          "in" : "path",
-          "required" : true,
-          "type" : "string"
-        } ],
+        "operationId" : "get",
+        "parameters" : [ ],
         "responses" : {
           "200" : {
-            "description" : "successful operation invoke",
+            "description" : "successful operation",
             "schema" : {
               "type" : "string"
             },
             "headers" : { }
           }
         }
-      }
-    },
-    "/swagger" : {
-      "get" : {
-        "operationId" : "getSwaggerDefinition",
-        "produces" : [ "text/plain" ],
-        "parameters" : [ {
-          "name" : "path",
-          "in" : "query",
-          "required" : false,
-          "type" : "string"
-        } ],
+      },
+      "post" : {
+        "operationId" : "post",
+        "parameters" : [ ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      },
+      "put" : {
+        "operationId" : "put",
+        "parameters" : [ ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      },
+      "delete" : {
+        "operationId" : "delete",
+        "parameters" : [ ],
         "responses" : {
           "default" : {
             "description" : "successful operation"
