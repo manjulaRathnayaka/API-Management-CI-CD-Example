@@ -1,0 +1,43 @@
+{
+  "swagger" : "2.0",
+  "info" : { },
+  "paths" : {
+    "/hello/{name}" : {
+      "get" : {
+        "operationId" : "hello",
+        "parameters" : [ {
+          "name" : "name",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation invoke",
+            "schema" : {
+              "type" : "string"
+            },
+            "headers" : { }
+          }
+        }
+      }
+    },
+    "/swagger" : {
+      "get" : {
+        "operationId" : "getSwaggerDefinition",
+        "produces" : [ "text/plain" ],
+        "parameters" : [ {
+          "name" : "path",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    }
+  }
+}

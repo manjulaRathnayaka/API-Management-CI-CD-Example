@@ -1,0 +1,394 @@
+{
+	"id": "184ac55e-9eda-e54d-21d4-c0f6ce058d59",
+	"name": "WSO2_API_PUBLISHER",
+	"description": "",
+	"order": [
+		"beba7c64-d80f-0f7d-5a38-ab7889af9876",
+		"7ad58c41-a887-68f5-58c8-4f107e2bd2c1",
+		"2acab3f6-c6b9-372b-c5e0-504d8b724201",
+		"effa3a4d-33ae-25b5-0426-537667f45800",
+		"3f0ba7f9-a12e-ffbb-795a-4920fe10fcc4",
+		"7fe4ffbd-a6dc-9e73-6681-94ffb764241d",
+		"f1a8a435-2a71-0993-78ce-f38ac46419f0"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1521111736164,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "2acab3f6-c6b9-372b-c5e0-504d8b724201",
+			"headers": "Authorization: Basic bzdiejZKSmFOTUVJVVJQTTZNZHc4OVVKNUZzYTpBbmZmcVVaQ2RaN3hRaURSRjduNGRSY0NYT3Nh\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Basic bzdiejZKSmFOTUVJVVJQTTZNZHc4OVVKNUZzYTpBbmZmcVVaQ2RaN3hRaURSRjduNGRSY0NYT3Nh",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{gatewayURL}}/token",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "scope",
+					"value": "apim:api_view",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "grant_type",
+					"value": "password",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "{{username}}",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "{{password}}",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"access_token_with_scope_view\", jsonData.access_token);\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521092736995,
+			"name": "Get Access Token with api_view scope",
+			"description": "",
+			"collectionId": "184ac55e-9eda-e54d-21d4-c0f6ce058d59",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "582ff762-3426-0541-c173-3ffc4b236f2f",
+			"collection_id": "184ac55e-9eda-e54d-21d4-c0f6ce058d59"
+		},
+		{
+			"id": "3f0ba7f9-a12e-ffbb-795a-4920fe10fcc4",
+			"headers": "Accept: application/json\nContent-Type: multipart/form-data\nAuthorization: Bearer {{access_token}}\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "multipart/form-data",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{gatewayURL}}/api/am/publisher/apis/{{apiId}}/swagger",
+			"queryParams": [],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [
+				{
+					"key": "apiDefinition",
+					"value": "swagger.json",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521085596172,
+			"name": "Update swagger definition",
+			"description": "This operation can be used to update the swagger definition of an existing API. Swagger definition to be updated is passed as a form data parameter `apiDefinition`.\n",
+			"collectionId": "184ac55e-9eda-e54d-21d4-c0f6ce058d59",
+			"responses": [],
+			"collection_id": "184ac55e-9eda-e54d-21d4-c0f6ce058d59"
+		},
+		{
+			"id": "7ad58c41-a887-68f5-58c8-4f107e2bd2c1",
+			"headers": "Authorization: Basic bzdiejZKSmFOTUVJVVJQTTZNZHc4OVVKNUZzYTpBbmZmcVVaQ2RaN3hRaURSRjduNGRSY0NYT3Nh\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Basic bzdiejZKSmFOTUVJVVJQTTZNZHc4OVVKNUZzYTpBbmZmcVVaQ2RaN3hRaURSRjduNGRSY0NYT3Nh",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{gatewayURL}}/token",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "scope",
+					"value": "apim:api_create",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "grant_type",
+					"value": "password",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "{{username}}",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "{{password}}",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"access_token\", jsonData.access_token);\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521086254894,
+			"name": "Get Access Token With api_create Scope",
+			"description": "",
+			"collectionId": "184ac55e-9eda-e54d-21d4-c0f6ce058d59",
+			"responses": [],
+			"collection_id": "184ac55e-9eda-e54d-21d4-c0f6ce058d59"
+		},
+		{
+			"id": "7fe4ffbd-a6dc-9e73-6681-94ffb764241d",
+			"headers": "Authorization: Basic bzdiejZKSmFOTUVJVVJQTTZNZHc4OVVKNUZzYTpBbmZmcVVaQ2RaN3hRaURSRjduNGRSY0NYT3Nh\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Basic bzdiejZKSmFOTUVJVVJQTTZNZHc4OVVKNUZzYTpBbmZmcVVaQ2RaN3hRaURSRjduNGRSY0NYT3Nh",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{gatewayURL}}/token",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "scope",
+					"value": "apim:api_publish",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "grant_type",
+					"value": "password",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "{{username}}",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "{{password}}",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"access_token_scope_publish\", jsonData.access_token);\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521086320597,
+			"name": "Get Access Token With api_publish Scope",
+			"description": "",
+			"collectionId": "184ac55e-9eda-e54d-21d4-c0f6ce058d59",
+			"responses": [],
+			"collection_id": "184ac55e-9eda-e54d-21d4-c0f6ce058d59"
+		},
+		{
+			"id": "beba7c64-d80f-0f7d-5a38-ab7889af9876",
+			"headers": "Content-Type: application/json\nAuthorization: Basic bWFuanVsYS5jc2VAZ21haWwuY29tQGNpY2QzODU3Ok1hbmp1bGFANQ==\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Basic bWFuanVsYS5jc2VAZ21haWwuY29tQGNpY2QzODU3Ok1hbmp1bGFANQ==",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{gatewayURL}}/client-registration/register",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"clientId\", jsonData.clientId);\npostman.setEnvironmentVariable(\"clientSecret\", jsonData.clientSecret);",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521086638123,
+			"name": "Dynamic Client Registration",
+			"description": "",
+			"collectionId": "184ac55e-9eda-e54d-21d4-c0f6ce058d59",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "c829cb75-33d7-9a4a-1a35-b6a2b0c0aa3f",
+			"collection_id": "184ac55e-9eda-e54d-21d4-c0f6ce058d59",
+			"rawModeData": "{\n    \"callbackUrl\": \"www.google.lk\",\n    \"clientName\": \"rest_api_publisher\",\n    \"tokenScope\": \"Production\",\n    \"owner\": \"{{username}}\",\n    \"grantType\": \"password refresh_token\",\n    \"saasApp\": true\n}"
+		},
+		{
+			"id": "effa3a4d-33ae-25b5-0426-537667f45800",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer {{access_token}}\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{gatewayURL}}/api/am/publisher/apis",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"apiId\", jsonData.id);\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521086298041,
+			"name": "Create an API",
+			"description": "",
+			"collectionId": "184ac55e-9eda-e54d-21d4-c0f6ce058d59",
+			"responses": [],
+			"collection_id": "184ac55e-9eda-e54d-21d4-c0f6ce058d59",
+			"rawModeData": "{\n\t\"id\": \"7a2298c4-c905-403f-8fac-38c73401631f\",\n   \"name\": \"{{apiName}}\",\n   \"description\": \"{{apiName}}\",\n   \"context\": \"/{{apiContext}}\",\n   \"version\": \"1.0.0\",\n   \"provider\": \"{{username}}\",\n   \"apiDefinition\":\"{}\",\n   \"wsdlUri\": null,\n   \"responseCaching\": \"Disabled\",\n   \"cacheTimeout\": 300,\n   \"destinationStatsEnabled\": null,\n   \"isDefaultVersion\": false,\n   \"type\": \"HTTP\",\n   \"transport\":    [\n      \"http\",\n      \"https\"\n   ],\n   \"tags\": [\"foo\"],\n   \"tiers\": [\"Unlimited\"],\n   \"maxTps\":    {\n      \"sandbox\": 5000,\n      \"production\": 1000\n   },\n   \"thumbnailUri\": null,\n   \"visibility\": \"PUBLIC\",\n   \"visibleRoles\": [],\n   \"visibleTenants\": [],\n   \"endpointConfig\": \"{\\\"production_endpoints\\\":{\\\"url\\\":\\\"{{backendAPIEndpoint}}\\\",\\\"config\\\":null},\\\"sandbox_endpoints\\\":{\\\"url\\\":\\\"{{backendAPIEndpoint}}\\\",\\\"config\\\":null},\\\"endpoint_type\\\":\\\"http\\\"}\",\n   \"endpointSecurity\":    {\n      \"username\": \"user\",\n      \"type\": \"basic\",\n      \"password\": \"pass\"\n   },\n   \"gatewayEnvironments\": \"Production and Sandbox\",\n   \"sequences\": [],\n   \"subscriptionAvailability\": null,\n   \"subscriptionAvailableTenants\": [],\n   \"businessInformation\":    {\n      \"businessOwnerEmail\": \"{{username}}\",\n      \"technicalOwnerEmail\": \"{{username}}\",\n      \"technicalOwner\": \"{{username}}\",\n      \"businessOwner\": \"{{username}}\"\n   },\n   \"corsConfiguration\":    {\n      \"accessControlAllowOrigins\": [\"*\"],\n      \"accessControlAllowHeaders\":       [\n         \"authorization\",\n         \"Access-Control-Allow-Origin\",\n         \"Content-Type\",\n         \"SOAPAction\"\n      ],\n      \"accessControlAllowMethods\":       [\n         \"GET\",\n         \"PUT\",\n         \"POST\",\n         \"DELETE\",\n         \"PATCH\",\n         \"OPTIONS\"\n      ],\n      \"accessControlAllowCredentials\": false,\n      \"corsConfigurationEnabled\": false\n   }\n}\n"
+		},
+		{
+			"id": "f1a8a435-2a71-0993-78ce-f38ac46419f0",
+			"headers": "Authorization: Bearer {{access_token_scope_publish}}\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token_scope_publish}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{gatewayURL}}/api/am/publisher/apis/change-lifecycle?action=Publish&apiId={{apiId}}",
+			"queryParams": [
+				{
+					"key": "action",
+					"value": "Publish",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "apiId",
+					"value": "{{apiId}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521085602148,
+			"name": "Change Life Cycle",
+			"description": "",
+			"collectionId": "184ac55e-9eda-e54d-21d4-c0f6ce058d59",
+			"responses": [],
+			"collection_id": "184ac55e-9eda-e54d-21d4-c0f6ce058d59"
+		}
+	]
+}
