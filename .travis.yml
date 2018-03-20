@@ -12,9 +12,9 @@ jobs:
       install:
       - npm install newman
       script:
-      - bash APIImplementation/build.sh && \
-        bash Dev-Stage/DeployAPIImplementation/deploy.sh && \
-        echo "Development API Runtime"
+      - bash APIImplementation/build.sh 
+      - bash Dev-Stage/DeployAPIImplementation/deploy.sh
+      - echo "Development API Runtime"
       - node_modules/.bin/newman run Dev-Stage/DeployManagedAPI/WSO2_API_PUBLISHER.postman_collection.json -e Dev-Stage/DeployManagedAPI/Development.postman_environment.json --global-var username=$clouduser --global-var password=$clouduserpass
 #      - echo "Staging API Runtime"
 #      - node_modules/.bin/newman run WSO2_API_PUBLISHER.postman_collection.json -e Staging.postman_environment.json --global-var username=$staging-clouduser --global-var password=$staging-clouduserpass 
