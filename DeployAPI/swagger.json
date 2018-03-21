@@ -1,6 +1,10 @@
 {
   "swagger" : "2.0",
-  "info" : { },
+  "info": {
+    "description": "API Definition of Hello",
+    "title": "Hello",
+    "version": "1.0.0"
+  },
   "paths" : {
     "/service" : {
       "get" : {
