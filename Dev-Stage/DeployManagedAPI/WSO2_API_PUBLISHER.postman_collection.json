@@ -242,6 +242,7 @@
 				{
 					"key": "apiDefinition",
 					"type": "file",
+					"value": "Dev-Stage/DeployManagedAPI/swagger.json",
 					"enabled": true
 				}
 			],
