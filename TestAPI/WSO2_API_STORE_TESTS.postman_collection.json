@@ -344,7 +344,7 @@
 					"enabled": true
 				}
 			],
-			"url": "https://gateway.api.cloud.wso2.com:443/t/cicd3857/hello/1.0.0/service/",
+			"url": "https://gateway.api.cloud.wso2.com:443/t/cicd3857/hello/1.0.0/",
 			"queryParams": [],
 			"preRequestScript": "",
 			"pathVariables": {},
