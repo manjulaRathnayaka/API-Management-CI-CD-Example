@@ -1,0 +1,408 @@
+{
+	"id": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
+	"name": "WSO2_API_STORE_TESTS",
+	"description": "",
+	"order": [
+		"e188dc10-9b93-f313-f697-ed26d1e6e1c1",
+		"b9fb1fed-0b72-5ebd-af7d-dbf95b01b810",
+		"24b94ce9-f309-f7b1-3d6c-c37e3988f0ac",
+		"a75a1697-98b0-4069-fd96-c31a8fcd6613",
+		"4af8ce49-4f5e-260f-a287-90714172b451",
+		"7909b6cb-5b87-e69b-994a-5931143201ff",
+		"8bc35901-2c1d-d821-c41f-0b469a041685",
+		"11930c56-1242-b663-a7de-3f9fd2f2dcb6",
+		"fe2c4533-a9c4-3fe3-df46-0fab55b37d30",
+		"e60829d7-7ace-3a92-94e4-ebf391d3c417"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1521612852681,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "11930c56-1242-b663-a7de-3f9fd2f2dcb6",
+			"headers": "Authorization: Bearer {{access_token_with_scope_subscribe}}\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token_with_scope_subscribe}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://gateway.api.cloud.wso2.com/api/am/store/applications/generate-keys?applicationId={{applicationId}}",
+			"queryParams": [
+				{
+					"key": "applicationId",
+					"value": "{{applicationId}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var jsonData = JSON.parse(responseBody);\n\npostman.setEnvironmentVariable(\"api_consumer_key\", jsonData.consumerKey);\npostman.setEnvironmentVariable(\"api_consumer_secret\", jsonData.consumerSecret);",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521648769442,
+			"name": "Generate Application Keys",
+			"description": "",
+			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
+			"responses": [],
+			"rawModeData": "{\n  \"validityTime\": \"3600\",\n  \"keyType\": \"PRODUCTION\",\n  \"accessAllowDomains\": [\"ALL\"]\n}"
+		},
+		{
+			"id": "24b94ce9-f309-f7b1-3d6c-c37e3988f0ac",
+			"headers": "Authorization: Bearer {{access_token_with_scope_subscribe}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token_with_scope_subscribe}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://gateway.api.cloud.wso2.com/api/am/store/applications?query=testingApp",
+			"queryParams": [
+				{
+					"key": "query",
+					"value": "testingApp",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "var jsonData = JSON.parse(responseBody);\nif(jsonData.count === 1){\n    postman.setEnvironmentVariable(\"applicationId\", jsonData.list[0].applicationId);\n      postman.setNextRequest(\"Get API\");\n}",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521629318854,
+			"name": "Get OAuth App",
+			"description": "",
+			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
+			"responses": []
+		},
+		{
+			"id": "4af8ce49-4f5e-260f-a287-90714172b451",
+			"headers": "Authorization: Bearer {{access_token_with_scope_subscribe}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token_with_scope_subscribe}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://gateway.api.cloud.wso2.com/api/am/store/apis?query=name:{{apiName}}",
+			"queryParams": [
+				{
+					"key": "query",
+					"value": "name:{{apiName}}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "var jsonData = JSON.parse(responseBody);\nif(jsonData.count === 1){\n postman.setEnvironmentVariable(\"apiId\", jsonData.list[0].id);   \n}\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521622437655,
+			"name": "Get API",
+			"description": "",
+			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
+			"responses": []
+		},
+		{
+			"id": "7909b6cb-5b87-e69b-994a-5931143201ff",
+			"headers": "Authorization: Bearer {{access_token_with_scope_subscribe}}\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token_with_scope_subscribe}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://gateway.api.cloud.wso2.com/api/am/store/subscriptions",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521615565177,
+			"name": "Subscribe to API",
+			"description": "",
+			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
+			"responses": [],
+			"rawModeData": "{\n    \"tier\": \"Unlimited\",\n    \"apiIdentifier\": \"{{apiId}}\",\n    \"applicationId\": \"{{applicationId}}\"\n}"
+		},
+		{
+			"id": "8bc35901-2c1d-d821-c41f-0b469a041685",
+			"headers": "Authorization: Bearer {{access_token_with_scope_subscribe}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token_with_scope_subscribe}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://gateway.api.cloud.wso2.com/api/am/store/applications/{{applicationId}}",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": "var jsonData = JSON.parse(responseBody);\n\nif(jsonData.keys.length === 0){\n  postman.setNextRequest(\"Generate Application Keys\");\n}else{\n    postman.setEnvironmentVariable(\"api_consumer_key\", jsonData.keys[0].consumerKey);\n    postman.setEnvironmentVariable(\"api_consumer_secret\", jsonData.keys[0].consumerSecret);\n    postman.setNextRequest(\"Generate Access Token\");\n}\n\n\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521627269608,
+			"name": "Get Application Details",
+			"description": "",
+			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
+			"responses": []
+		},
+		{
+			"id": "a75a1697-98b0-4069-fd96-c31a8fcd6613",
+			"headers": "Authorization: Bearer {{access_token_with_scope_subscribe}}\nContent-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{access_token_with_scope_subscribe}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://gateway.api.cloud.wso2.com/api/am/store/applications",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "var jsonData = JSON.parse(responseBody);\n\npostman.setEnvironmentVariable(\"applicationId\", jsonData.applicationId);",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521648836998,
+			"name": "Create OAuth App",
+			"description": "",
+			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
+			"responses": [],
+			"rawModeData": "{\n    \"throttlingTier\": \"Unlimited\",\n    \"description\": \"testingapp\",\n    \"name\": \"testingApp\",\n    \"callbackUrl\": \"http://localhost/callback\"\n}"
+		},
+		{
+			"id": "b9fb1fed-0b72-5ebd-af7d-dbf95b01b810",
+			"headers": "Authorization: Basic bzdiejZKSmFOTUVJVVJQTTZNZHc4OVVKNUZzYTpBbmZmcVVaQ2RaN3hRaURSRjduNGRSY0NYT3Nh\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Basic bzdiejZKSmFOTUVJVVJQTTZNZHc4OVVKNUZzYTpBbmZmcVVaQ2RaN3hRaURSRjduNGRSY0NYT3Nh",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{gatewayURL}}/token",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "scope",
+					"value": "apim:subscribe",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "grant_type",
+					"value": "password",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "{{username}}",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "{{password}}",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"access_token_with_scope_subscribe\", jsonData.access_token);\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521614247202,
+			"name": "Get Access Token with apim:subscribe scope",
+			"description": "",
+			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
+			"responses": []
+		},
+		{
+			"id": "e188dc10-9b93-f313-f697-ed26d1e6e1c1",
+			"headers": "Content-Type: application/json\nAuthorization: Basic bWFuanVsYS5jc2VAZ21haWwuY29tQGNpY2QzODU3Ok1hbmp1bGFANQ==\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Basic bWFuanVsYS5jc2VAZ21haWwuY29tQGNpY2QzODU3Ok1hbmp1bGFANQ==",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{gatewayURL}}/client-registration/register",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"clientId\", jsonData.clientId);\npostman.setEnvironmentVariable(\"clientSecret\", jsonData.clientSecret);",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521616962102,
+			"name": "Dynamic Client Registration",
+			"description": "",
+			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
+			"responses": [],
+			"rawModeData": "{\n    \"callbackUrl\": \"www.google.lk\",\n    \"clientName\": \"rest_api_store\",\n    \"tokenScope\": \"Production\",\n    \"owner\": \"{{username}}\",\n    \"grantType\": \"password refresh_token\",\n    \"saasApp\": true\n}"
+		},
+		{
+			"id": "e60829d7-7ace-3a92-94e4-ebf391d3c417",
+			"headers": "Authorization: Bearer {{api_access_token}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{api_access_token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://gateway.api.cloud.wso2.com:443/t/cicd3857/hello/1.0.0/service/",
+			"queryParams": [],
+			"preRequestScript": "",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521622293672,
+			"name": "https://gateway.api.cloud.wso2.com:443/t/cicd3857/hello/1.0.0/service",
+			"description": "",
+			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
+			"responses": []
+		},
+		{
+			"id": "fe2c4533-a9c4-3fe3-df46-0fab55b37d30",
+			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: Basic {{authKey}}\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Basic {{authKey}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://gateway.api.cloud.wso2.com:443/token",
+			"queryParams": [],
+			"preRequestScript": "var authKey = btoa(postman.getEnvironmentVariable(\"api_consumer_key\") + ':' + postman.getEnvironmentVariable(\"api_consumer_secret\"));\npostman.setEnvironmentVariable(\"authKey\", authKey);\n",
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "grant_type",
+					"value": "client_credentials",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": "var jsonData = JSON.parse(responseBody);\n\npostman.setEnvironmentVariable(\"api_access_token\", jsonData.access_token);",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521648808469,
+			"name": "Generate Access Token",
+			"description": "",
+			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
+			"responses": []
+		}
+	]
+}
