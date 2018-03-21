@@ -13,11 +13,11 @@ appHashId=$(curl -b /tmp/cookie -X POST "$SERVER_URL/appmgt/site/blocks/applicat
 
 if [[ ! -z $appHashId ]] 
 then
- curl -b cookie -X POST $SERVER_URL/appmgt/site/blocks/application/application.jag -F action=deleteApplication -F applicationKey=$appHashId
+ curl -b /tmp/cookie -X POST $SERVER_URL/appmgt/site/blocks/application/application.jag -F action=deleteApplication -F applicationKey=$appHashId
 fi
 fi
 
 echo "deploy backend service to integration cloud"
-curl -b cookie -X POST $SERVER_URL/appmgt/site/blocks/application/application.jag -F action=createApplication -F applicationName=$APPLICATION_NAME -F applicationDescription=$APPLICATION_NAME -F runtime=26 -F appTypeName=mss -F applicationRevision=$APPLICATION_VERSION -F uploadedFileName=$DEPLOYABLE_ARTIFACT_NAME -F runtimeProperties=[] -F tags=[] -F fileupload=@$DEPLOYABLE_ARTIFACT_PATH/$DEPLOYABLE_ARTIFACT_NAME -F isFileAttached=true -F conSpec=2 -F isNewVersion=false -F appCreationMethod=default -F setDefaultVersion=true
+curl -b /tmp/cookie -X POST $SERVER_URL/appmgt/site/blocks/application/application.jag -F action=createApplication -F applicationName=$APPLICATION_NAME -F applicationDescription=$APPLICATION_NAME -F runtime=26 -F appTypeName=mss -F applicationRevision=$APPLICATION_VERSION -F uploadedFileName=$DEPLOYABLE_ARTIFACT_NAME -F runtimeProperties=[] -F tags=[] -F fileupload=@$DEPLOYABLE_ARTIFACT_PATH/$DEPLOYABLE_ARTIFACT_NAME -F isFileAttached=true -F conSpec=2 -F isNewVersion=false -F appCreationMethod=default -F setDefaultVersion=true
 
 echo "application was successfully deployed"
