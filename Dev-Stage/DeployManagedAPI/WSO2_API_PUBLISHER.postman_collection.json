@@ -241,8 +241,8 @@
 			"data": [
 				{
 					"key": "apiDefinition",
-					"type": "file",
 					"value": "Dev-Stage/DeployManagedAPI/swagger.json",
+					"type": "file",
 					"enabled": true
 				}
 			],
@@ -251,7 +251,7 @@
 			"tests": "if (postman.getEnvironmentVariable(\"apiStatus\") === \"PUBLISHED\") {\n   postman.setNextRequest(null);\n  \n}\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1521594846390,
+			"time": 1521596928097,
 			"name": "Update swagger definition",
 			"description": "This operation can be used to update the swagger definition of an existing API. Swagger definition to be updated is passed as a form data parameter `apiDefinition`.\n",
 			"collectionId": "38a11701-5fe9-cd7e-b933-afb057ad8fac",
@@ -416,10 +416,10 @@
 			"data": null,
 			"dataMode": "params",
 			"version": 2,
-			"tests": "var jsonData = JSON.parse(responseBody);\nif (jsonData.count === 1) {\n   postman.setNextRequest(\"Update swagger definition\");\n  \n}\n\n\npostman.setEnvironmentVariable(\"apiStatus\", jsonData.status);   \n\n\n\n",
+			"tests": "var jsonData = JSON.parse(responseBody);\nif (jsonData.count === 1) {\n   postman.setNextRequest(\"Update swagger definition\");\n   \n   postman.setEnvironmentVariable(\"apiStatus\", jsonData.list[0].status); \n   postman.setEnvironmentVariable(\"apiId\", jsonData.list[0].id);\n\n  \n}\n\n\n\n\n\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1521594719745,
+			"time": 1521597618688,
 			"name": "Get Existing API",
 			"description": "",
 			"collectionId": "38a11701-5fe9-cd7e-b933-afb057ad8fac",
