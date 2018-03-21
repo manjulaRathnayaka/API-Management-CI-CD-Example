@@ -29,7 +29,7 @@ import javax.ws.rs.Path;
  *
  * @since 0.1-SNAPSHOT
  */
-@Path("/service")
+@Path("/")
 public class HelloService {
 
     @GET
