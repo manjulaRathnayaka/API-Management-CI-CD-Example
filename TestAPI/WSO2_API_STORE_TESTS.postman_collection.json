@@ -356,8 +356,8 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1521622293672,
-			"name": "https://gateway.api.cloud.wso2.com:443/t/cicd3857/hello/1.0.0/service",
+			"time": 1521693425869,
+			"name": "Hello Service - Get",
 			"description": "",
 			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
 			"responses": []
