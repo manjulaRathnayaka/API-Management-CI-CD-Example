@@ -7,14 +7,13 @@ echo "login to integration cloud"
 curl -c /tmp/cookie -X POST -k "$SERVER_URL/appmgt/site/blocks/user/login/ajax/login.jag" -d "action=login&userName=$clouduser&password=$clouduserpass"
 
 appStatusCode=$(curl -w "%{http_code}" -b /tmp/cookie -X POST "$SERVER_URL/appmgt/site/blocks/application/application.jag" -d "action=getApplication&applicationName=$APPLICATION_NAME")
-echo $appStatusCode
-if [[ $appStatusCode == "200" ]]
-then
+if [[ $appStatusCode = *"200"* ]]; then
+echo "application already exists"
 appHashId=$(curl -b /tmp/cookie -X POST "$SERVER_URL/appmgt/site/blocks/application/application.jag" -d "action=getApplication&applicationName=$APPLICATION_NAME" |jq -r .hashId)
 echo $appHashId
 if [[ ! -z $appHashId ]] 
 then
-echo "deleting exisitng app"
+echo "deleting exisitng application"
  curl -b /tmp/cookie -X POST $SERVER_URL/appmgt/site/blocks/application/application.jag -F action=deleteApplication -F applicationKey=$appHashId
 fi
 fi
