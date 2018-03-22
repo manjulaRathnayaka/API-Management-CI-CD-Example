@@ -1,6 +1,6 @@
 
 
-## Getting started guide
+## Getting Started Guide
 
 This example demonstrate a sample CI/CD pipeline for API Management using [WSO2 API Management](https://wso2.com/api-management/) solution combined with Travis CI and Newman.
 
@@ -8,7 +8,7 @@ This example demonstrate a sample CI/CD pipeline for API Management using [WSO2 
 
   
 
-Check out the [Travis build](https://travis-ci.org/manjulaRathnayaka/API-Management-CI-CD-Example/builds/356742320) here.
+Check out the [Travis build](https://travis-ci.org/manjulaRathnayaka/API-Management-CI-CD-Example/builds/356742320) here to understand pipeline further.
 
   
 
@@ -31,9 +31,7 @@ Check out the [Travis build](https://travis-ci.org/manjulaRathnayaka/API-Managem
 4.  Fork this git repository.
     
 5.  Configure Dev environment.
-    
-
-	1.  Update DevEnvironment/backendService.properites file to set the correct git repository path.  DEPLOYABLE\_ARTIFACT\_PATH=/home/travis/build/<YourGitHubOrganizationName>/API-Management-CI-CD-Example/BackendServiceImpl/Hello-Service/target
+    1.  Update DevEnvironment/backendService.properites file to set the correct git repository path.  DEPLOYABLE\_ARTIFACT\_PATH=/home/travis/build/**YourGitHubOrganizationName**/API-Management-CI-CD-Example/BackendServiceImpl/Hello-Service/target
     
 	2.  Update DevEnvironment/Development.postman_environment.json to set your organization name.   
 
@@ -67,7 +65,7 @@ Check out the [Travis build](https://travis-ci.org/manjulaRathnayaka/API-Managem
 	   
 	 1. Update StagingEnvironment/backendService.properites file to set the
 	    correct git repository path. 
-	            DEPLOYABLE\_ARTIFACT\_PATH=/home/travis/build/<YourGitHubOrganizationName>/API-Management-CI-CD-Example/BackendServiceImpl/Hello-Service/target
+	            DEPLOYABLE\_ARTIFACT\_PATH=/home/travis/build/**YourGitHubOrganizationName**/API-Management-CI-CD-Example/BackendServiceImpl/Hello-Service/target
 	    
 	 2. Update StagingEnvironment/Development.postman_environment.json to set your
 	        organization name.
