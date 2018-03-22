@@ -37,7 +37,7 @@
 					"enabled": true
 				}
 			],
-			"url": "https://gateway.api.cloud.wso2.com/api/am/store/applications/generate-keys?applicationId={{applicationId}}",
+			"url": "{{gatewayURL}}/api/am/store/applications/generate-keys?applicationId={{applicationId}}",
 			"queryParams": [
 				{
 					"key": "applicationId",
@@ -56,7 +56,7 @@
 			"tests": "var jsonData = JSON.parse(responseBody);\n\npostman.setEnvironmentVariable(\"api_consumer_key\", jsonData.consumerKey);\npostman.setEnvironmentVariable(\"api_consumer_secret\", jsonData.consumerSecret);",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1521648769442,
+			"time": 1521701943937,
 			"name": "Generate Application Keys",
 			"description": "",
 			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
@@ -74,7 +74,7 @@
 					"enabled": true
 				}
 			],
-			"url": "https://gateway.api.cloud.wso2.com/api/am/store/applications?query=testingApp",
+			"url": "{{gatewayURL}}/api/am/store/applications?query=testingApp",
 			"queryParams": [
 				{
 					"key": "query",
@@ -93,7 +93,7 @@
 			"tests": "var jsonData = JSON.parse(responseBody);\nif(jsonData.count === 1){\n    postman.setEnvironmentVariable(\"applicationId\", jsonData.list[0].applicationId);\n      postman.setNextRequest(\"Get API\");\n}",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1521629318854,
+			"time": 1521701910979,
 			"name": "Get OAuth App",
 			"description": "",
 			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
@@ -110,7 +110,7 @@
 					"enabled": true
 				}
 			],
-			"url": "https://gateway.api.cloud.wso2.com/api/am/store/apis?query=name:{{apiName}}",
+			"url": "{{gatewayURL}}/api/am/store/apis?query=name:{{apiName}}",
 			"queryParams": [
 				{
 					"key": "query",
@@ -129,7 +129,7 @@
 			"tests": "var jsonData = JSON.parse(responseBody);\nif(jsonData.count === 1){\n postman.setEnvironmentVariable(\"apiId\", jsonData.list[0].id);   \n}\n\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1521622437655,
+			"time": 1521701920275,
 			"name": "Get API",
 			"description": "",
 			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
@@ -152,7 +152,7 @@
 					"enabled": true
 				}
 			],
-			"url": "https://gateway.api.cloud.wso2.com/api/am/store/subscriptions",
+			"url": "{{gatewayURL}}/api/am/store/subscriptions",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -163,7 +163,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1521615565177,
+			"time": 1521701928061,
 			"name": "Subscribe to API",
 			"description": "",
 			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
@@ -181,7 +181,7 @@
 					"enabled": true
 				}
 			],
-			"url": "https://gateway.api.cloud.wso2.com/api/am/store/applications/{{applicationId}}",
+			"url": "{{gatewayURL}}/api/am/store/applications/{{applicationId}}",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -192,7 +192,7 @@
 			"tests": "var jsonData = JSON.parse(responseBody);\n\nif(jsonData.keys.length === 0){\n  postman.setNextRequest(\"Generate Application Keys\");\n}else{\n    postman.setEnvironmentVariable(\"api_consumer_key\", jsonData.keys[0].consumerKey);\n    postman.setEnvironmentVariable(\"api_consumer_secret\", jsonData.keys[0].consumerSecret);\n    postman.setNextRequest(\"Generate Access Token\");\n}\n\n\n\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1521627269608,
+			"time": 1521701936794,
 			"name": "Get Application Details",
 			"description": "",
 			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
@@ -215,7 +215,7 @@
 					"enabled": true
 				}
 			],
-			"url": "https://gateway.api.cloud.wso2.com/api/am/store/applications",
+			"url": "{{gatewayURL}}/api/am/store/applications",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -226,7 +226,7 @@
 			"tests": "var jsonData = JSON.parse(responseBody);\n\npostman.setEnvironmentVariable(\"applicationId\", jsonData.applicationId);",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1521648836998,
+			"time": 1521701908474,
 			"name": "Create OAuth App",
 			"description": "",
 			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
@@ -299,7 +299,7 @@
 		},
 		{
 			"id": "e188dc10-9b93-f313-f697-ed26d1e6e1c1",
-			"headers": "Content-Type: application/json\nAuthorization: Basic bWFuanVsYS5jc2VAZ21haWwuY29tQGNpY2QzODU3Ok1hbmp1bGFANQ==\n",
+			"headers": "Content-Type: application/json\nAuthorization: Basic {{base64Key}}\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -309,14 +309,14 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "Basic bWFuanVsYS5jc2VAZ21haWwuY29tQGNpY2QzODU3Ok1hbmp1bGFANQ==",
+					"value": "Basic {{base64Key}}",
 					"description": "",
 					"enabled": true
 				}
 			],
 			"url": "{{gatewayURL}}/client-registration/register",
 			"queryParams": [],
-			"preRequestScript": null,
+			"preRequestScript": "var base64Key = btoa(postman.getGlobalVariable(\"username\") + ':' + postman.getGlobalVariable(\"password\"));\npostman.setEnvironmentVariable(\"base64Key\", base64Key);\n",
 			"pathVariables": {},
 			"pathVariableData": [],
 			"method": "POST",
@@ -326,7 +326,7 @@
 			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"clientId\", jsonData.clientId);\npostman.setEnvironmentVariable(\"clientSecret\", jsonData.clientSecret);",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1521616962102,
+			"time": 1521701579058,
 			"name": "Dynamic Client Registration",
 			"description": "",
 			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
@@ -344,7 +344,7 @@
 					"enabled": true
 				}
 			],
-			"url": "https://gateway.api.cloud.wso2.com:443/t/cicd3857/hello/1.0.0/",
+			"url": "{{gatewayURL}}/t/{{tenantDomain}}/hello/1.0.0/",
 			"queryParams": [],
 			"preRequestScript": "",
 			"pathVariables": {},
@@ -356,7 +356,7 @@
 			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\ntests[\"Response message contains Hello from WSO2 API Management CI/CD Example\"] = responseBody === \"Hello from WSO2 API Management CI/CD Example\";\n\n",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1521694467377,
+			"time": 1521702009027,
 			"name": "Hello Service - Get",
 			"description": "",
 			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
@@ -379,7 +379,7 @@
 					"enabled": true
 				}
 			],
-			"url": "https://gateway.api.cloud.wso2.com:443/token",
+			"url": "{{gatewayURL}}/token",
 			"queryParams": [],
 			"preRequestScript": "var authKey = btoa(postman.getEnvironmentVariable(\"api_consumer_key\") + ':' + postman.getEnvironmentVariable(\"api_consumer_secret\"));\npostman.setEnvironmentVariable(\"authKey\", authKey);\n",
 			"pathVariables": {},
@@ -398,7 +398,7 @@
 			"tests": "var jsonData = JSON.parse(responseBody);\n\npostman.setEnvironmentVariable(\"api_access_token\", jsonData.access_token);",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1521648808469,
+			"time": 1521701958622,
 			"name": "Generate Access Token",
 			"description": "",
 			"collectionId": "fc3a3128-d79d-131d-4e27-c9c6f1da1457",
