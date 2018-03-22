@@ -2,6 +2,13 @@
 set -e
 environment=$1
 source "$environment"Environment/backendService.properites 
+if [[ $environment == "Dev" ]];then
+   clouduser=$devclouduser
+   clouduserpass=$devclouduserpass
+else
+   clouduser=$stagingclouduser
+   clouduserpass=$stagingclouduserpass
+fi
 
 echo "login to integration cloud"
 curl -c /tmp/cookie -X POST -k "$SERVER_URL/appmgt/site/blocks/user/login/ajax/login.jag" -d "action=login&userName=$clouduser&password=$clouduserpass"
