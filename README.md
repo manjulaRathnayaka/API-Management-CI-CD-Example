@@ -67,7 +67,7 @@ Check out the [Travis build](https://travis-ci.org/manjulaRathnayaka/API-Managem
 	    correct git repository path. 
 	            DEPLOYABLE\_ARTIFACT\_PATH=/home/travis/build/**YourGitHubOrganizationName**/API-Management-CI-CD-Example/BackendServiceImpl/Hello-Service/target
 	    
-	 2. Update StagingEnvironment/Development.postman_environment.json to set your
+	 2. Update StagingEnvironment/Staging.postman_environment.json to set your
 	        organization name.
 
             
