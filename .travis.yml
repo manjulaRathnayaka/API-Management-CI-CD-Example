@@ -13,18 +13,18 @@ jobs:
       - npm install newman
       script:
       - echo "Start building the source code" 
-      - bash BackendServiceImpl/build.sh 
+      - bash BackendServiceImpl/build.sh || travis_terminate 1; 
       - echo "Start deploying the backend service to WSO2 Integration Cloud Dev Tenant" 
-      - bash DeployBackendService/deploy.sh Dev
+      - bash DeployBackendService/deploy.sh Dev || travis_terminate 1;
       - echo "Start deploying the managed REST API to WSO2 API Cloud Dev Tenant"
-      - node_modules/.bin/newman run DeployAPI/WSO2_API_PUBLISHER.postman_collection.json -e DevEnvironment/Development.postman_environment.json --global-var username=$devclouduser --global-var password=$devclouduserpass --bail
+      - node_modules/.bin/newman run DeployAPI/WSO2_API_PUBLISHER.postman_collection.json -e DevEnvironment/Development.postman_environment.json --global-var username=$devclouduser --global-var password=$devclouduserpass --bail || travis_terminate 1;
       - echo "Start testing the REST API in WSO2 API Cloud Dev Tenant"
-      - node_modules/.bin/newman run TestAPI/WSO2_API_STORE_TESTS.postman_collection.json -e DevEnvironment/Development.postman_environment.json --global-var username=$devclouduser --global-var password=$devclouduserpass --bail
+      - node_modules/.bin/newman run TestAPI/WSO2_API_STORE_TESTS.postman_collection.json -e DevEnvironment/Development.postman_environment.json --global-var username=$devclouduser --global-var password=$devclouduserpass --bail || travis_terminate 1;
       - echo "Promoting to Staging Environment" 
       - echo "Start deploying the backend service to WSO2 Integration Cloud Staging Tenant"
       - bash DeployBackendService/deploy.sh Staging 
       - echo "Start deploying the managed REST API to WSO2 API Cloud Staging Tenant"
-      - node_modules/.bin/newman run DeployAPI/WSO2_API_PUBLISHER.postman_collection.json -e StagingEnvironment/Staging.postman_environment.json --global-var username=$stagingclouduser --global-var password=$stagingclouduserpass --bail
+      - node_modules/.bin/newman run DeployAPI/WSO2_API_PUBLISHER.postman_collection.json -e StagingEnvironment/Staging.postman_environment.json --global-var username=$stagingclouduser --global-var password=$stagingclouduserpass --bail || travis_terminate 1;
       - echo "Start testing the REST API in WSO2 API Cloud Staging Tenant"
-      - node_modules/.bin/newman run TestAPI/WSO2_API_STORE_TESTS.postman_collection.json -e StagingEnvironment/Staging.postman_environment.json --global-var username=$stagingclouduser --global-var password=$stagingclouduserpass --bail
+      - node_modules/.bin/newman run TestAPI/WSO2_API_STORE_TESTS.postman_collection.json -e StagingEnvironment/Staging.postman_environment.json --global-var username=$stagingclouduser --global-var password=$stagingclouduserpass --bail || travis_terminate 1;
 
