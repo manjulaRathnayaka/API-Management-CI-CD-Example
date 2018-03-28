@@ -36,7 +36,7 @@ public class HelloService {
     @Path("/")
     public String get() {
         // TODO: Implementation for HTTP GET request
-        Systems.out.println("GET invoked");
+        System.out.println("GET invoked");
         return "Hello from WSO2 API Management CI/CD Example";
     }
 
